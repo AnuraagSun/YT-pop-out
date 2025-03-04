@@ -5,6 +5,7 @@
   "description": "Instantly pop out YouTube videos into a borderless, lag-free floating window.",
   "permissions": ["activeTab", "tabs", "storage"],
   "action": {
+    "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",
