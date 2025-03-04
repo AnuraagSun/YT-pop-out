@@ -1,0 +1,38 @@
+/* Style the Pop-Out button in YouTube's player */
+#yt-pop-out-button {
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  opacity: 0.7;
+}
+
+#yt-pop-out-button:hover {
+  opacity: 1;
+}
+
+/* Ensure controls in the pop-up window are smooth and GPU-accelerated */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.95); /* Slight scale for smoothness */
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  will-change: opacity, transform; /* Hint to browser for GPU acceleration */
+}
+
+video:hover + .controls,
+.controls:hover {
+  display: flex;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.controls button {
+  transition: transform 0.1s ease;
+}
+
+.controls button:hover {
+  transform: scale(1.2); /* Smooth hover effect */
+}
