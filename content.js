@@ -51,3 +51,25 @@ function addPopOutButton(player) {
 waitForPlayer((player) => {
   addPopOutButton(player);
 });
+// Add this to the existing content.js
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === 'syncVideo') {
+    const player = document.querySelector('#movie_player');
+    const video = player.querySelector('video');
+    if (video) {
+      video.currentTime = message.currentTime;
+      if (message.isPlaying && video.paused) {
+        video.play();
+      } else if (!message.isPlaying && !video.paused) {
+        video.pause();
+      }
+    }
+  } else if (message.action === 'resumeVideo') {
+    const player = document.querySelector('#movie_player');
+    const video = player.querySelector('video');
+    if (video && video.paused) {
+      video.play();
+    }
+  }
+});
